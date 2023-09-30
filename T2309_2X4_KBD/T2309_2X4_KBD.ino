@@ -17,13 +17,13 @@ TaHa TaHa_10ms;
 
 BtnPinOnOff  Pin1;
 BtnPinOnOff  BtnPin[8];
-
+uint8_t addr = 0;
 
 void setup() 
 {
   delay(2000);
   Serial.begin(9600); 
-  Serial.println("btn_pin_on_off_test.ino  2023");
+  Serial.println("2309_2x4_KBD");
 
   BtnPin[0].Init(ROW1,'A');
   BtnPin[1].Init(ROW2,'B');
@@ -49,11 +49,13 @@ void loop() {
         char c = BtnPin[i].Read();
         if (c != 0x00) 
         {
+            /*
             if ((c & 0b10000000) == 0) 
                 Serial.print("On ");
             else 
                 Serial.print("Off ");
-            Serial.println(c & 0b01111111);
+            */    
+            Serial.print(char(c & 0b01111111));
 
         }
 
